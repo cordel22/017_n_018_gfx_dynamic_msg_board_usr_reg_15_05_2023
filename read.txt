@@ -1,0 +1,23 @@
+login app si checkuje user_id aj user_level vo footri
+
+user_id		user_level
+
+forum app v headeri!!!	<=	login app condition from l.61 if logged in else logged out
+
+
+login cely asi
+
+logout si tiez
+
+register aaj forgot password
+
+index je koze za loginom
+
+
+
+presmeruj vsetky login (register app) cally na databazu do forum2 databazy, lebo to mas v ch18...
+
+user_id 	lang_id		time_zone	username	pass	email
+
+auto			1		America/New_York	:username	:pass	:email
+

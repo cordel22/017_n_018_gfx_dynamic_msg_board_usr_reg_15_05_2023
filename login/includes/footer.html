@@ -1,0 +1,139 @@
+
+
+    <!--  Start of Footer -->
+</div><!--  Content -->
+
+<div id="Menu">
+  <a href="index.php" title="Home Page">Home</a><br />
+  <?php # Script 18.2 - footer.html
+    //  This page completes the HTML template.
+
+   //  dummy login profiles
+  //  $_SESSION['user_id'] = 1;
+  //  $_SESSION['user_tz'] = 'America/
+  //  ➝ New_York';
+  
+  //  dummy login admin
+  //  $_SESSION['user_level'] = 1;
+  
+  //  dummy logout
+  //  $_SESSION = array();
+
+
+  //  akoze ak neni user_id a user_level, tak nech nic, 
+  //  pri najhorsom aj query by chcelo mozno...
+  //  lebo user level je iba v ch18ke
+/*  tiez asi len test..? neni v knihe though, odkial to mas_
+  if (!isset($_SESSION['user_id']) && !isset($_SESSION['user_level'])) {
+    $_SESSION = array();  //  Destroy the variables.
+    session_destroy();  //  Destroy the session itself.
+    setcookie (session_name(), '', time()-3600);  //  Destroy the cookie.
+  }
+  
+  */
+  
+  
+  
+    //just testin
+/*    if (isset($_SESSION)) {
+      var_dump($_SESSION);
+    } else {
+      echo '$_SESSION not set\n';
+    };
+    echo "<br />";
+    if (isset($_SESSION['user_level'])) {
+      var_dump($_SESSION['user_level']);
+  } else {
+    echo '$_SESSION[user_level] not set\n';   //  quotes
+  };
+  echo "<br />";
+    if (isset($_SESSION['user_id'])) {
+      var_dump($_SESSION['user_id']);
+    } else {
+      echo '$_SESSION[user_id] not set\n';  //  quotes
+    };
+    echo "<br />";
+*/
+
+//  inak tu si to vynulujes, jak kokot  
+//$_SESSION = array();
+    //  Display links based upon the login status:
+    if (isset($_SESSION['user_id'])) {
+      echo '<a href="logout.php" title="Logout">
+              Logout
+            </a><br />
+            <a href="change_password.php" title="Change Your Password">
+      Change Password
+    </a><br />
+    ';
+    
+    /*  nemas ani view_user.php, ani admin level, tak ti to vyhadzuje takyto error:
+
+    An error occured in script
+'C:\Users\Sisi\Desktop\akcia_14_07_21\php-14-07-21\gfx_dynamic_php_mysql\018_gfx_dynamic_usr_reg\includes\footer.html' on line 22: Undefined array key "user_level"
+Date/Time: 12-25-2021 15:40:51
+#0  my_error_handler(2, Undefined array key "user_level", C:\Users\Sisi\Desktop\akcia_14_07_21\php-14-07-21\gfx_dynamic_php_mysql\018_gfx_dynamic_usr_reg\includes\footer.html, 22) called at [C:\Users\Sisi\Desktop\akcia_14_07_21\php-14-07-21\gfx_dynamic_php_mysql\018_gfx_dynamic_usr_reg\includes\footer.html:22]
+#1  include(C:\Users\Sisi\Desktop\akcia_14_07_21\php-14-07-21\gfx_dynamic_php_mysql\018_gfx_dynamic_usr_reg\includes\footer.html) called at [C:\Users\Sisi\Desktop\akcia_14_07_21\php-14-07-21\gfx_dynamic_php_mysql\018_gfx_dynamic_usr_reg\index.php:31]
+Some Page
+
+
+
+p 602 
+Site Administration
+For this application, how the site
+administration works depends upon
+what you want it to do. One additional
+page you would probably want for an
+administrator would be a view_users.
+php script, like the one created in
+Chapter 9 and modified in Chapter 10,
+“Common Programming Techniques.”
+It’s already listed in the administrator’s
+links. You could use such a script to link
+to an edit_user.php page, which would
+allow the administrator to manually
+activate an account, declare that a user
+is an administrator, or change a person’s
+password. An administrator could also
+delete a user using such a page.
+While the footer file creates links to
+administrative pages only if the loggedin
+user is an administrator, every administration
+page should also include such
+a check.
+*/
+
+      //  Add links if the user is an administrator:
+
+      if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 1) {
+        echo '<a href="view_users.php" title="View All Users">
+                View Users
+              </a><br />
+
+              <a href="#">Some Admin Page</a><br />
+      ';
+      } 
+            
+    } else {
+      //  Not logged in.  //  "http://localhost/register.php"
+      echo '<a href="register.php" title="Register for the site">   
+              Register
+            </a><br />
+            <a href="login.php" title="Login">Login</a><br /><p>skus ee   e@e.com   eeee</p>
+            <a href="forgot_password.php" title="Password Retrieval">
+              Retrieve Password
+            </a><br />
+      ';
+    }
+  ?>
+  <a href="#">Some Page</a><br />
+  <a href="#">Another Page</a><br />
+</div><!--  Menu  -->
+
+</body>
+</html>
+<?php //  Flush the buffered output.
+ob_end_flush();
+?>  <!--  paste code here?  wtf?  -->
+
+
